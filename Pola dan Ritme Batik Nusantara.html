@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pola dan Ritme Batik Nusantara</title>
+<style>
+:root{--br:#5b3a1e;--br2:#8b5a2b;--yl:#f6c343;--cr:#fff4d6;--cr2:#ffe9a8;--ok:#2e7d32;--no:#b3401f;--bg:#fff9e8;--tx:#3b2412;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2a1a0d;--cr:#3d2714;--cr2:#4e3319;--tx:#ffeec2;--br:#f6c343;--br2:#e0a94a}}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Nunito","Trebuchet MS",Verdana,sans-serif;background:var(--bg);color:var(--tx);font-size:18px;line-height:1.5}
+header{background:#5b3a1e;color:#ffe9a8;padding:10px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+header b{font-size:1.05rem}
+.steps{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
+.steps button{border:2px solid #f6c343;background:transparent;color:#ffe9a8;border-radius:20px;padding:2px 10px;font:inherit;font-size:.8rem;cursor:pointer}
+.steps button.on{background:#f6c343;color:#5b3a1e;font-weight:700}
+main{max-width:860px;margin:0 auto;padding:16px}
+.slide{display:none;animation:in .5s}
+.slide.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.card{background:var(--cr);border:3px solid var(--br2);border-radius:22px;padding:18px;margin-bottom:14px;box-shadow:0 5px 0 var(--br2)}
+h1,h2,h3{color:var(--br);margin:.3em 0}
+h1{font-size:2rem;text-align:center}
+.ic{width:84px;height:84px;border-radius:16px;background:#fff4d6;border:3px solid var(--br2)}
+.row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.float{animation:fl 2.4s ease-in-out infinite}.float:nth-child(2){animation-delay:.4s}.float:nth-child(3){animation-delay:.8s}
+@keyframes fl{50%{transform:translateY(-10px) rotate(4deg)}}
+.btn{background:var(--yl);color:#5b3a1e;border:3px solid var(--br);border-radius:16px;padding:10px 20px;font:inherit;font-weight:800;cursor:pointer;box-shadow:0 4px 0 var(--br);transition:transform .1s}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--br)}
+.btn:disabled{opacity:.5}
+.nav{display:flex;justify-content:space-between;margin-top:10px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.tab{flex:1;min-width:90px;text-align:center;padding:8px;border-radius:14px;border:3px solid var(--br2);background:var(--cr2);cursor:pointer;font-weight:700;color:var(--tx)}
+.tab.on{background:var(--yl);color:#5b3a1e}
+.opt{display:block;width:100%;text-align:left;margin:8px 0;padding:10px 14px;border-radius:14px;border:3px solid var(--br2);background:#fff4d6;color:#3b2412;font:inherit;cursor:pointer;transition:transform .15s}
+.opt:hover{transform:scale(1.02)}
+.opt.ok{background:#c8e6c9;border-color:var(--ok)}.opt.no{background:#ffccbc;border-color:var(--no);animation:sh .4s}
+@keyframes sh{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+input.t,select{font:inherit;padding:8px 12px;border-radius:12px;border:3px solid var(--br2);background:#fff4d6;color:#3b2412;max-width:100%}
+.fb{margin-top:10px;padding:12px;border-radius:14px;font-weight:700;animation:in .4s}
+.fb.ok{background:#c8e6c9;color:#1b5e20;animation:pop .5s}.fb.no{background:#ffe0d2;color:#7a2a10}
+@keyframes pop{50%{transform:scale(1.06)}}
+.bar{height:14px;background:var(--cr2);border-radius:10px;overflow:hidden;margin-bottom:10px}
+.bar i{display:block;height:100%;background:var(--br2);transition:width .5s}
+.seq{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.seq .ic{width:64px;height:64px}
+.blank{width:64px;height:64px;border:3px dashed var(--br);border-radius:14px;display:grid;place-items:center;font-size:2rem;background:var(--cr2);color:var(--br)}
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;max-width:420px;margin:10px auto}
+.cell{aspect-ratio:1;background:#fff4d6;border:2px solid var(--br2);border-radius:8px;cursor:pointer;padding:0;transition:transform .15s}
+.cell:hover{transform:scale(1.12)}
+.cell svg{width:100%;height:100%;display:block}
+.pal .ic{width:56px;height:56px;cursor:pointer}.pal .ic.sel{outline:4px solid var(--yl);transform:scale(1.1)}
+.match{display:grid;grid-template-columns:auto 1fr;gap:8px 12px;align-items:center;margin:10px 0}
+.star{position:fixed;pointer-events:none;font-size:1.6rem;animation:up 1.2s forwards;z-index:20}
+@keyframes up{to{transform:translateY(-160px) rotate(200deg);opacity:0}}
+.big{font-size:3rem;text-align:center}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<symbol id="kawung" viewBox="0 0 40 40"><rect width="40" height="40" fill="#8b5a2b"/><g fill="#f6c343" stroke="#3b2412" stroke-width="1.2"><ellipse cx="20" cy="10" rx="5" ry="8.5"/><ellipse cx="20" cy="30" rx="5" ry="8.5"/><ellipse cx="10" cy="20" rx="8.5" ry="5"/><ellipse cx="30" cy="20" rx="8.5" ry="5"/></g><circle cx="20" cy="20" r="2.6" fill="#3b2412"/></symbol>
+<symbol id="parang" viewBox="0 0 40 40"><rect width="40" height="40" fill="#f6c343"/><g fill="none" stroke-linecap="round"><path d="M-4 14Q6 -2 16 10T40 2" stroke="#5b3a1e" stroke-width="5"/><path d="M-4 28Q6 12 16 24T40 16" stroke="#8b5a2b" stroke-width="5"/><path d="M-4 42Q6 26 16 38T40 30" stroke="#5b3a1e" stroke-width="5"/></g></symbol>
+<symbol id="truntum" viewBox="0 0 40 40"><rect width="40" height="40" fill="#5b3a1e"/><g fill="#f6c343"><g id="fl"><ellipse cx="20" cy="12" rx="2.6" ry="6"/><ellipse cx="20" cy="28" rx="2.6" ry="6"/><ellipse cx="12" cy="20" rx="6" ry="2.6"/><ellipse cx="28" cy="20" rx="6" ry="2.6"/><circle cx="20" cy="20" r="2.6" fill="#fff4d6"/></g><circle cx="4" cy="4" r="1.8"/><circle cx="36" cy="4" r="1.8"/><circle cx="4" cy="36" r="1.8"/><circle cx="36" cy="36" r="1.8"/></g></symbol>
+</defs></svg>
+
+<header><span style="font-size:1.6rem">🦉</span><b>Pola dan Ritme Batik</b>
+<div class="steps" id="steps"></div></header>
+<main>
+<section class="slide on" id="s0">
+ <div class="card">
+  <div class="row"><svg class="ic float"><use href="#kawung"/></svg><svg class="ic float"><use href="#parang"/></svg><svg class="ic float"><use href="#truntum"/></svg></div>
+  <h1>Pola dan Ritme<br>Batik Nusantara</h1>
+  <p style="text-align:center">Media Pembelajaran Interaktif · Seni Rupa · Kelas 5 (Fase C)</p>
+  <p style="text-align:center">Halo, teman-teman! Aku Si Bijak 🦉. Yuk, jalan-jalan mengenal pola dan ritme di sekitar kita!</p>
+  <div style="background:var(--cr2);border-radius:14px;padding:10px 14px;font-size:.95rem">
+   <b>Identitas Pengembang</b><br>Efi Yuliawati<br>Kepala SDN Gegunung Kulon, Rembang, Jawa Tengah<br>Duta Teknologi Jawa Tengah
+  </div>
+  <div class="nav"><span></span><button class="btn" onclick="go(1)">Mulai ▶</button></div>
+ </div>
+</section>
+
+<section class="slide" id="s1">
+ <div class="card"><h2>🎯 Tujuan Pembelajaran</h2>
+  <p>Setelah belajar, kamu dapat <b>mengidentifikasi pola dan ritme yang ada di sekitarmu</b>.</p>
+  <ul><li>Menemukan pola berulang pada batik dan benda di sekitar.</li><li>Mengenal batik kawung, parang, dan truntum.</li><li>Menjelaskan ritme dari pengulangan bentuk.</li></ul>
+  <div class="nav"><button class="btn" onclick="go(0)">◀ Kembali</button><button class="btn" onclick="go(2)">Lanjut ▶</button></div>
+ </div>
+</section>
+
+<section class="slide" id="s2">
+ <div class="card"><h2>📖 Materi Singkat</h2>
+  <div class="tabs" id="tabs"></div>
+  <div id="mat"></div>
+  <div class="nav"><button class="btn" onclick="go(1)">◀ Kembali</button><button class="btn" onclick="go(3)">Lanjut ▶</button></div>
+ </div>
+</section>
+
+<section class="slide" id="s3">
+ <div class="card"><h2>🎮 Aktivitas 1: Lanjutkan Polanya!</h2>
+  <p>Pilih motif yang cocok untuk kotak kosong.</p>
+  <div class="seq" id="seq"></div><div class="row pal" id="choices"></div>
+  <div id="afb"></div>
+ </div>
+ <div class="card"><h2>🎨 Aktivitas 2: Kanvas Batikku</h2>
+  <p>Pilih motif, lalu ketuk kotak. Ulangi dengan teratur agar muncul pola dan ritme!</p>
+  <div class="row pal" id="pal"></div><div class="grid" id="grid"></div>
+  <div class="row"><button class="btn" onclick="fillRow()">Ulangi baris atas ⬇</button><button class="btn" onclick="buildGrid()">Hapus 🧹</button></div>
+  <div class="nav"><button class="btn" onclick="go(2)">◀ Kembali</button><button class="btn" onclick="go(4)">Ke Kuis ▶</button></div>
+ </div>
+</section>
+
+<section class="slide" id="s4">
+ <div class="card"><div class="bar"><i id="pb" style="width:0"></i></div><div id="quiz"></div></div>
+</section>
+
+<section class="slide" id="s5">
+ <div class="card"><div class="big" id="medal">🏅</div><h2 style="text-align:center">Umpan Balik dan Refleksi</h2>
+  <p style="text-align:center;font-size:1.3rem" id="score"></p><p id="msg" style="text-align:center"></p>
+  <h3>Refleksi</h3>
+  <label><input type="checkbox"> Aku bisa menyebut pola dan ritme.</label><br>
+  <label><input type="checkbox"> Aku bisa membedakan kawung, parang, dan truntum.</label><br>
+  <label><input type="checkbox"> Aku menemukan pola di sekitarku.</label>
+  <p>Pola apa yang kamu temukan di rumah atau sekolah?</p>
+  <textarea class="t" rows="3" style="width:100%;font:inherit;padding:8px;border-radius:12px;border:3px solid var(--br2);background:#fff4d6;color:#3b2412"></textarea>
+  <div class="nav"><button class="btn" onclick="go(2)">📖 Baca Materi</button><button class="btn" onclick="startQuiz();go(4)">🔄 Ulangi Kuis</button></div>
+ </div>
+</section>
+</main>
+
+<script>
+const $=s=>document.querySelector(s);
+const names=["Pembuka","Tujuan","Materi","Aktivitas","Kuis","Refleksi"];
+function go(n){document.querySelectorAll(".slide").forEach((e,i)=>e.classList.toggle("on",i==n));document.querySelectorAll(".steps button").forEach((b,i)=>b.classList.toggle("on",i==n));scrollTo({top:0,behavior:"smooth"});if(n==4&&qi==0&&!done)startQuiz()}
+$("#steps").innerHTML=names.map((n,i)=>`<button class="${i?'':'on'}" onclick="go(${i})">${n}</button>`).join("");
+const ic=(k,c="ic")=>`<svg class="${c}"><use href="#${k}"/></svg>`;
+const M={
+ pola:{t:"Pola",i:"🔁",h:"<b>Pola</b> adalah susunan bentuk atau gambar yang <b>berulang dengan teratur</b>. Contoh: 🔵 🔺 🔵 🔺 🔵 🔺. Pola ada di batik, pagar, ubin lantai, dan jendela."},
+ ritme:{t:"Ritme",i:"🎵",h:"<b>Ritme</b> adalah kesan irama atau gerak yang muncul karena <b>pengulangan</b> bentuk. Seperti lagu, mata kita seakan bergerak mengikuti ketukan: tok-tok-tok! Pengulangan bisa sama besar atau bergantian."},
+ kawung:{t:"Kawung",k:"kawung",h:"<b>Batik Kawung</b>: motif lingkaran lonjong yang tersusun rapi, mirip irisan buah kolang-kaling. Melambangkan kesucian dan keadilan."},
+ parang:{t:"Parang",k:"parang",h:"<b>Batik Parang</b>: motif garis miring bergelombang yang tidak putus, seperti ombak. Melambangkan semangat pantang menyerah."},
+ truntum:{t:"Truntum",k:"truntum",h:"<b>Batik Truntum</b>: motif bunga kecil seperti bintang di langit malam yang tersebar teratur. Melambangkan cinta yang tumbuh kembali."}
+};
+$("#tabs").innerHTML=Object.keys(M).map((k,i)=>`<div class="tab ${i?'':'on'}" onclick="tab('${k}',this)">${M[k].t}</div>`).join("");
+function tab(k,el){document.querySelectorAll(".tab").forEach(t=>t.classList.remove("on"));el.classList.add("on");show(k)}
+function show(k){const m=M[k];$("#mat").innerHTML=`<div class="row" style="align-items:center">${m.k?ic(m.k):`<div class="big">${m.i}</div>`}<p style="flex:1;min-width:220px">${m.h}</p></div>${m.k?`<div class="row" style="margin-top:8px">${[0,1,2,3].map(()=>ic(m.k,"ic float").replace('class="ic float"','class="ic float" style="width:54px;height:54px"')).join("")}</div><p style="text-align:center">Lihat, bentuknya diulang-ulang. Itulah pola dan ritme!</p>`:""}`}
+show("pola");
+
+// Aktivitas 1
+const ks=["kawung","parang","truntum"];let rnd=0;
+const rounds=[[["kawung","parang","kawung","parang","kawung"],"parang"],[["truntum","truntum","kawung","truntum","truntum"],"kawung"],[["parang","kawung","truntum","parang","kawung"],"truntum"]];
+function loadR(){const [s,a]=rounds[rnd%3];$("#seq").innerHTML=s.map(k=>ic(k)).join("")+'<div class="blank">?</div>';$("#choices").innerHTML=ks.map(k=>`<span onclick="pick('${k}','${a}')">${ic(k)}</span>`).join("");$("#afb").innerHTML=""}
+function pick(k,a){if(k==a){stars();$("#afb").innerHTML='<div class="fb ok">🌟 Hebat! Polanya tepat. <button class="btn" onclick="rnd++;loadR()">Soal berikutnya</button></div>'}else $("#afb").innerHTML='<div class="fb no">Coba lagi ya. Perhatikan urutan motif yang berulang.</div>'}
+loadR();
+// Aktivitas 2
+let cur="kawung",cells=[];
+$("#pal").innerHTML=ks.map(k=>`<span onclick="sel('${k}',this)">${ic(k,"ic"+(k==cur?" sel":""))}</span>`).join("");
+function sel(k,el){cur=k;document.querySelectorAll("#pal .ic").forEach(i=>i.classList.remove("sel"));el.firstChild.classList.add("sel")}
+function buildGrid(){cells=Array(24).fill(null);drawG()}
+function drawG(){$("#grid").innerHTML=cells.map((c,i)=>`<button class="cell" onclick="put(${i})">${c?ic(c,"").replace('class=""','width="100%" height="100%"'):""}</button>`).join("")}
+function put(i){cells[i]=cur;drawG()}
+function fillRow(){for(let i=6;i<24;i++)cells[i]=cells[i%6];drawG()}
+buildGrid();
+
+// Kuis
+const P=["Hebat sekali! Kamu pintar! 🌟","Keren! Jawabanmu tepat! 👏","Mantap! Pertahankan ya! 🎉","Luar biasa! Kamu seniman cilik! 🏅"];
+const Q=[
+{t:"mc",q:"Susunan bentuk yang berulang secara teratur disebut ...",o:["Pola","Warna","Garis acak"],a:0,e:"Pola adalah susunan bentuk yang diulang dengan teratur."},
+{t:"mc",q:"Kesan irama yang muncul karena bentuk diulang disebut ...",o:["Ritme","Bingkai","Kertas"],a:0,e:"Ritme adalah kesan irama atau gerak dari pengulangan bentuk."},
+{t:"mc",q:"Motif lingkaran lonjong bersusun seperti kolang-kaling adalah batik ...",o:["Kawung","Parang","Truntum"],a:0,e:"Kawung memiliki lingkaran lonjong yang tersusun rapi."},
+{t:"mc",q:"Motif garis miring bergelombang seperti ombak adalah batik ...",o:["Kawung","Parang","Truntum"],a:1,e:"Parang bergaris miring bergelombang dan tidak putus."},
+{t:"mc",q:"Motif bunga kecil seperti bintang yang tersebar adalah batik ...",o:["Parang","Kawung","Truntum"],a:2,e:"Truntum bermotif bunga kecil seperti bintang."},
+{t:"mc",q:"Pola 🔵 🔺 🔵 🔺 🔵 ... selanjutnya adalah ...",o:["🔺","🔵","⬛"],a:0,e:"Polanya bergantian: bulat, segitiga. Setelah bulat, giliran segitiga."},
+{t:"fill",q:"Pengulangan bentuk yang teratur membentuk ... (satu kata)",a:["pola"],e:"Jawabannya pola, yaitu bentuk yang berulang teratur."},
+{t:"fill",q:"Batik dengan garis miring seperti ombak bernama ...",a:["parang","batik parang"],e:"Jawabannya parang."},
+{t:"fill",q:"Kesan irama dari pengulangan bentuk disebut ...",a:["ritme","irama"],e:"Jawabannya ritme."},
+{t:"fill",q:"Lanjutkan pola angka: 1 2 3 1 2 3 1 2 ...",a:["3"],e:"Polanya 1 2 3 berulang, jadi setelah 2 adalah 3."},
+{t:"fill",q:"Batik bermotif lingkaran lonjong bersusun empat bernama ...",a:["kawung","batik kawung"],e:"Jawabannya kawung."},
+{t:"match",q:"Jodohkan motif dengan cirinya!",p:[["Kawung","Lingkaran lonjong bersusun"],["Parang","Garis miring bergelombang"],["Truntum","Bunga kecil seperti bintang"]]},
+{t:"match",q:"Jodohkan benda dengan bentuk yang berulang!",p:[["Pagar rumah","Batang tegak"],["Ubin lantai","Kotak-kotak"],["Anak tangga","Undakan naik"]]},
+{t:"match",q:"Jodohkan istilah dengan artinya!",p:[["Pola","Bentuk berulang teratur"],["Ritme","Kesan irama dari pengulangan"],["Motif","Bentuk dasar hiasan"]]},
+{t:"match",q:"Jodohkan batik dengan maknanya!",p:[["Kawung","Kesucian dan keadilan"],["Parang","Semangat pantang menyerah"],["Truntum","Cinta yang tumbuh kembali"]]}
+];
+let qi=0,sc=0,done=false,locked=false;
+const shuf=a=>[...a].sort(()=>Math.random()-.5);
+function startQuiz(){qi=0;sc=0;done=false;drawQ()}
+function drawQ(){
+ const q=Q[qi];locked=false;$("#pb").style.width=(qi/Q.length*100)+"%";
+ let h=`<p>Soal ${qi+1} dari ${Q.length}</p><h3>${q.q}</h3>`;
+ if(q.t=="mc")h+=q.o.map((o,i)=>`<button class="opt" onclick="mc(${i},this)">${o}</button>`).join("");
+ if(q.t=="fill")h+=`<input class="t" id="fi" placeholder="Tulis jawabanmu"> <button class="btn" onclick="fill()">Cek</button>`;
+ if(q.t=="match"){const r=shuf(q.p.map(x=>x[1]));h+=`<div class="match">${q.p.map((x,i)=>`<b>${x[0]}</b><select id="m${i}"><option value="">Pilih...</option>${r.map(o=>`<option>${o}</option>`).join("")}</select>`).join("")}</div><button class="btn" onclick="mt()">Cek</button>`}
+ $("#quiz").innerHTML=h+'<div id="qf"></div>';
+}
+function end(ok,expl){
+ if(locked)return;locked=true;if(ok){sc++;stars()}
+ $("#qf").innerHTML=`<div class="fb ${ok?'ok':'no'}">${ok?P[Math.floor(Math.random()*P.length)]:'Belum tepat. Penjelasan: '+expl}</div><div class="nav"><span></span><button class="btn" onclick="nx()">${qi==Q.length-1?'Lihat Hasil 🏁':'Lanjut ▶'}</button></div>`;
+}
+function mc(i,b){const q=Q[qi];if(locked)return;b.classList.add(i==q.a?"ok":"no");if(i!=q.a)document.querySelectorAll(".opt")[q.a].classList.add("ok");end(i==q.a,q.e)}
+function fill(){const q=Q[qi],v=$("#fi").value.trim().toLowerCase();if(!v)return;end(q.a.includes(v),q.e)}
+function mt(){const q=Q[qi];let ok=true;q.p.forEach((x,i)=>{if($("#m"+i).value!=x[1])ok=false});end(ok,"Pasangan yang benar: "+q.p.map(x=>x[0]+" = "+x[1]).join("; ")+".")}
+function nx(){qi++;if(qi>=Q.length){done=true;result()}else drawQ()}
+function result(){const n=Math.round(sc/Q.length*100);$("#score").textContent=`Skormu: ${sc} dari ${Q.length} (nilai ${n})`;
+ $("#medal").textContent=n>=80?"🏆":n>=60?"🥇":"🌱";
+ $("#msg").textContent=n>=80?"Luar biasa! Kamu sudah paham pola dan ritme. Teruslah berkarya!":n>=60?"Bagus! Sedikit lagi kamu mahir. Baca materi lalu coba lagi ya.":"Jangan menyerah! Yuk baca materi lagi, lalu ulangi kuisnya.";
+ go(5);stars()}
+function stars(){for(let i=0;i<8;i++){const s=document.createElement("div");s.className="star";s.textContent=["⭐","✨","🌟"][i%3];s.style.left=(20+Math.random()*60)+"vw";s.style.top=(50+Math.random()*30)+"vh";document.body.appendChild(s);setTimeout(()=>s.remove(),1200)}}
+</script>
+</body>
+</html>
